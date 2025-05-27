@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phishing Awareness</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+      padding: 40px 20px;
+      margin: 0;
+    }
+    h1 {
+      color: #d9534f; /* red warning color */
+      font-size: 2.5rem;
+      margin-bottom: 0.3rem;
+    }
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+    .gif-container {
+      max-width: 400px;
+      margin: 0 auto 30px;
+    }
+    img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    button {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    button:hover {
+      background-color: #c9302c;
+    }
+
+    /* Warning confetti container */
+    #confetti-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 9999;
+    }
+    .confetti-warning {
+      position: absolute;
+      font-size: 20px;
+      animation: confetti-fall linear forwards;
+      user-select: none;
+    }
+    @keyframes confetti-fall {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>GOTCHA! YOU HAVE BEEN PHISHED! ⚠️🛑🚫</h1>
+  <p class="subtitle">⚠️🧐 Don't click on any random and suspicious-looking URLs! ❌🔒</p>
+  <p>This link was part of a phishing awareness training. Always verify links and email senders before clicking!</p>
+    
+  <div class="gif-container">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXJ1a2ExNTV0eTFyZ2swaTRkZ21mdXhjeXFjbDE3cGhubTZqdGJxcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2zdnl4CB3OygOHe1kX/giphy.gif" alt="Phishing warning animation" />
+  </div>
+
+  <a href="https://forms.gle/GjLcdaAgxWUSYQLr5" target="_blank" rel="noopener noreferrer">
+    <button>← Back to Main Page</button>
+  </a>
+
+  <div id="confetti-container"></div>
+
+  <script>
+    const container = document.getElementById('confetti-container');
+    const emojis = ['⚠️', '🛑', '🚫', '❌', '🔒', '🛡️'];
+    const confettiCount = 40;
+
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    for (let i = 0; i < confettiCount; i++) {
+      const emoji = document.createElement('div');
+      emoji.classList.add('confetti-warning');
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = `${randomRange(0, 100)}vw`;
+      emoji.style.top = `${randomRange(-20, 0)}vh`;
+      emoji.style.fontSize = `${randomRange(15, 30)}px`;
+      emoji.style.animationDuration = `${randomRange(3, 7)}s`;
+      emoji.style.animationDelay = `${randomRange(0, 5)}s`;
+      container.appendChild(emoji);
+    }
+  </script>
+
+</body>
+</html>
